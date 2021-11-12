@@ -1,0 +1,28 @@
+
+<!--
+    ~ Copyright 2021 Compose Academy
+    ~
+    ~ Licensed under the Apache License, Version 2.0 (the "License");
+    ~ you may not use this file except in compliance with the License.
+    ~ You may obtain a copy of the License at
+    ~
+    ~      http://www.apache.org/licenses/LICENSE-2.0
+    ~
+    ~ Unless required by applicable law or agreed to in writing, software
+    ~ distributed under the License is distributed on an "AS IS" BASIS,
+    ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    ~ See the License for the specific language governing permissions and
+    ~ limitations under the License.
+  -->
+<resources>
+    <string name="app_name">Home</string>
+    <string name="cd_create_item">Create a new item</string>
+    <string name="cd_more_info">More Information</string>
+    <string name="not_available_yet">Not available yet</string>
+
+    <string name="label_name">Compose Academy</string>
+    <string name="label_email">contact@compose.academy</string>
+    <string name="log_out">Log Out</string>
+    <string name="cd_open_menu">Open Menu</string>
+    <string name="cd_navigate_up">Go back home</string>
+</resources>
