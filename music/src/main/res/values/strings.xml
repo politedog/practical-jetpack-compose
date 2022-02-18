@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Music</string>
+    <string name="message_search_results">No results to display</string>
+    <string name="hint_search">Search for a track, artist or album…</string>
+
+    <string name="heading_featured">Featured Tracks</string>
+    <string name="heading_recently_played">Recently Played</string>
+    <string name="heading_new">New Tracks</string>
+
+    <string name="cd_search">Search</string>
+    <string name="cd_clear_query">Clear query</string>
+    <string name="cd_fast_forward">Fast Forward</string>
+    <string name="cd_rewind">Rewind</string>
+    <string name="cd_play">Play</string>
+    <string name="cd_pause">Pause</string>
+    <string name="cd_close_now_playing">Close Now Playing Sheet</string>
+
+    <string name="action_show_player">Show Player</string>
+    <string name="action_select_track">Play %s</string>
+</resources>

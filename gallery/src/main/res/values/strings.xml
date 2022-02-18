@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gallery</string>
+    <string name="cd_enlarge_image">Enlarge Image</string>
+    <string name="launch_settings">Grant Permission in Settings</string>
+    <string name="permission_message">To be able to show you images from the gallery, you need to grant this app permission to access the external storage.</string>
+    <string name="permission_explainer_message">To display media we need access to the storage on your device</string>
+    <string name="permission_explainer_action">Grant permission</string>
+</resources>
