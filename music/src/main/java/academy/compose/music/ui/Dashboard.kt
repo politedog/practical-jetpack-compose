@@ -1,5 +1,21 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.music.ui
 
+import academy.compose.music.ContentFactory
 import academy.compose.music.Tags
 import academy.compose.music.model.MusicCatalogEvent
 import academy.compose.music.model.MusicDashboardState
@@ -21,7 +37,9 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.chrisbanes.snapper.ExperimentalSnapperApi
 
+@ExperimentalSnapperApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
@@ -38,8 +56,9 @@ fun Dashboard(
     }
 
     BackdropScaffold(
-        peekHeight = 0.dp,
+        modifier = Modifier.testTag(Tags.TAG_DASHBOARD),
         headerHeight = 65.dp,
+        peekHeight = 0.dp,
         gesturesEnabled = false,
         backLayerBackgroundColor = MaterialTheme.colors.surface,
         scaffoldState = scaffoldState,
@@ -61,8 +80,7 @@ fun Dashboard(
         backLayerContent = {
             TracksDashboard(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .testTag(Tags.TAG_DASHBOARD),
+                    .fillMaxSize(),
                 state = state,
                 onTrackClicked = { track ->
                     handleEvent(MusicCatalogEvent.PlayTrack(track))
@@ -81,6 +99,7 @@ fun Dashboard(
     )
 }
 
+@ExperimentalSnapperApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @Preview
@@ -88,7 +107,26 @@ fun Dashboard(
 fun Preview_MusicPlayer() {
     MaterialTheme {
         Dashboard(
-            state = MusicDashboardState(),
+            state = MusicDashboardState(
+                tracks = ContentFactory.makeContentList()
+            ),
+            handleEvent = { }
+        )
+    }
+}
+
+@ExperimentalSnapperApi
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
+@Preview
+@Composable
+fun Preview_MusicPlayer_Player() {
+    MaterialTheme {
+        Dashboard(
+            state = MusicDashboardState(
+                tracks = ContentFactory.makeContentList(),
+                nowPlaying = ContentFactory.makeNowPlaying(ContentFactory.makeTrack())
+            ),
             handleEvent = { }
         )
     }

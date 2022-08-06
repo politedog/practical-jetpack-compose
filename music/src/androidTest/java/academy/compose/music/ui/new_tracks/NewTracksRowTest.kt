@@ -1,22 +1,33 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.music.ui.new_tracks
 
 import academy.compose.music.ContentFactory
 import academy.compose.music.Tags.TAG_NEW_TRACKS
 import academy.compose.music.Tags.TAG_TRACK
 import academy.compose.music.model.Track
-import androidx.compose.ui.test.assert
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onChildAt
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performScrollTo
+import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.mock
 
+@ExperimentalSnapperApi
 class NewTracksRowTest {
 
     @get:Rule
@@ -49,11 +60,9 @@ class NewTracksRowTest {
             NewTracksRow(tracks = tracks, onTrackClicked = {})
         }
 
-        tracks.forEachIndexed { index, track ->
+        tracks.forEach { track ->
             composeTestRule.onNodeWithTag(TAG_NEW_TRACKS)
-                .onChildAt(index)
-                .performScrollTo()
-                .assert(hasTestTag(TAG_TRACK + track.id))
+                .performScrollToNode(hasTestTag(TAG_TRACK + track.id))
                 .assertIsDisplayed()
         }
     }

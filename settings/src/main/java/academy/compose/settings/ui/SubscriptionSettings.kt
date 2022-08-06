@@ -43,7 +43,7 @@ fun ManageSubscriptionSettingItem(
                 .clickable(
                     onClickLabel = stringResource(id = R.string.cd_manage_subscription)
                 ) { onSettingClicked() }
-                .padding(16.dp),
+                .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(

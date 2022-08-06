@@ -13,7 +13,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/authentication" />
+            <option value="$PROJECT_DIR$/calendar" />
             <option value="$PROJECT_DIR$/gallery" />
+            <option value="$PROJECT_DIR$/graphs" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/inbox" />
             <option value="$PROJECT_DIR$/messaging" />
@@ -22,7 +24,6 @@
             <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">calendar</string>
+
+    <string name="cd_view_more_events">View more events</string>
+    <string name="cd_previous_month">Previous Month</string>
+    <string name="cd_next_month">Next Month</string>
+
+    <string-array name="days_of_week">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array>
+</resources>

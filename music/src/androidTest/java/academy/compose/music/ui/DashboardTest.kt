@@ -1,26 +1,39 @@
-package academy.compose.music
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package academy.compose.music.ui
 
 import academy.compose.music.Tags.TAG_DASHBOARD
+import academy.compose.music.Tags.TAG_DISMISS_PLAYER
 import academy.compose.music.Tags.TAG_PLAYER
 import academy.compose.music.Tags.TAG_PLAYER_BAR
 import academy.compose.music.Tags.TAG_SEARCH_BAR
-import academy.compose.practical.music_catalog.TestDataFactory
+import academy.compose.music.TestDataFactory
 import academy.compose.music.model.MusicDashboardState
-import academy.compose.music.ui.Dashboard
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.performClick
-import androidx.test.platform.app.InstrumentationRegistry
+import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalSnapperApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
-class ScaffoldTest {
+class DashboardTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -86,9 +99,8 @@ class ScaffoldTest {
         composeTestRule.onNodeWithTag(TAG_PLAYER)
             .assertIsDisplayed()
 
-        composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().targetContext
-                .getString(R.string.cd_close_now_playing)
+        composeTestRule.onNodeWithTag(
+            TAG_DISMISS_PLAYER
         ).performClick()
 
         composeTestRule.onNodeWithTag(TAG_PLAYER)
@@ -96,7 +108,7 @@ class ScaffoldTest {
     }
 
     @Test
-    fun Player_Dismissed_Shows_PLayer_Bar() {
+    fun Player_Dismissed_Shows_Player_Bar() {
         composeTestRule.setContent {
             Dashboard(
                 state = MusicDashboardState(
@@ -112,10 +124,8 @@ class ScaffoldTest {
         composeTestRule.onNodeWithTag(TAG_PLAYER)
             .assertIsDisplayed()
 
-        composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().targetContext
-                .getString(R.string.cd_close_now_playing)
-        ).performClick()
+        composeTestRule.onNodeWithTag(TAG_DISMISS_PLAYER)
+            .performClick()
 
         composeTestRule.onNodeWithTag(TAG_PLAYER_BAR)
             .assertIsDisplayed()
