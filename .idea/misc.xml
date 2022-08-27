@@ -447,10 +447,32 @@
         <entry key="../../../../layout/compose-model-1654854439465.xml" value="0.145778364116095" />
         <entry key="../../../../layout/compose-model-1654854491545.xml" value="0.17407407407407408" />
         <entry key="../../../../layout/compose-model-1654856102736.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1661452552988.xml" value="0.375" />
+        <entry key="../../../../layout/compose-model-1661453619242.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1661453719976.xml" value="0.45" />
+        <entry key="../../../../layout/compose-model-1661464589252.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1661496345150.xml" value="0.55" />
+        <entry key="../../../../layout/compose-model-1661496454954.xml" value="0.5370370370370371" />
+        <entry key="../../../../layout/compose-model-1661496567899.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1661496660652.xml" value="0.17483108108108109" />
+        <entry key="../../../../layout/compose-model-1661496773315.xml" value="0.17483108108108109" />
+        <entry key="../../../../layout/compose-model-1661496846166.xml" value="0.45" />
+        <entry key="../../../../layout/compose-model-1661496846167.xml" value="0.16573033707865167" />
+        <entry key="../../../../layout/compose-model-1661505581596.xml" value="0.55" />
+        <entry key="../../../../layout/compose-model-1661506192268.xml" value="0.125" />
+        <entry key="../../../../layout/compose-model-1661506381151.xml" value="0.18707770270270271" />
+        <entry key="../../../../layout/compose-model-1661584712282.xml" value="0.18707770270270271" />
+        <entry key="../../../../layout/compose-model-1661586232666.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1661586392298.xml" value="0.1" />
         <entry key="authentication/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21770833333333334" />
         <entry key="authentication/src/main/res/drawable/ic_launcher_background.xml" value="0.21770833333333334" />
         <entry key="authentication/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21770833333333334" />
         <entry key="authentication/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21770833333333334" />
+        <entry key="blog/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1" />
+        <entry key="calendar/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="calendar/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="calendar/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="calendar/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="gallery/src/main/res/drawable/ic_baseline_error_24.xml" value="0.1575" />
         <entry key="graphs/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="graphs/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />

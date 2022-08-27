@@ -1,6 +1,5 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
-import academy.compose.example.calendar.R
 import academy.compose.calendar.Tags.TAG_DAYS_OF_WEEK
 import academy.compose.calendar.ui.DaysOfWeek
 import androidx.compose.ui.test.assertTextEquals

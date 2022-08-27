@@ -81,6 +81,9 @@ fun Playback(
                     PlayerStatus.PAUSED -> {
                         playerView.player?.pause()
                     }
+                    else -> {
+                        //Do nothing
+                    }
                 }
             })
     ) {

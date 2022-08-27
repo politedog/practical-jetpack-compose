@@ -1,7 +1,6 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
 import academy.compose.calendar.model.CalendarState
-import academy.compose.example.calendar.R
 import academy.compose.calendar.Tags.TAG_DAYS_OF_WEEK
 import academy.compose.calendar.Tags.TAG_HEADER
 import academy.compose.calendar.Tags.TAG_MONTH_HEADER
@@ -58,24 +57,6 @@ class MonthlyTest {
                     Calendar.LONG_FORMAT, Locale.getDefault()
                 )
             )
-    }
-
-    @Test
-    fun Days_Of_Week_Displayed() {
-        val state = CalendarState(
-            Calendar.getInstance()
-        )
-        composeTestRule.setContent {
-            MonthCalendar(
-                calendarState = state
-            )
-        }
-
-        composeTestRule.onNodeWithTag(
-            TAG_DAYS_OF_WEEK + "_" + state.dates[1]
-                .get(Calendar.MONTH)
-                .toString()
-        ).assertIsDisplayed()
     }
 
     @Test

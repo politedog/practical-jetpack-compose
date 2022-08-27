@@ -1,7 +1,6 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
-import academy.compose.example.calendar.R
-import academy.compose.practical.calendar.TestDataFactory.randomString
+import academy.compose.calendar.TestDataFactory.randomString
 import academy.compose.calendar.ui.Header
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule

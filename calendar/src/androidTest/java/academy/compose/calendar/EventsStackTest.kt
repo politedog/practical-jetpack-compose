@@ -1,7 +1,5 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
-import academy.compose.calendar.EventFactory
-import academy.compose.example.calendar.R
 import academy.compose.calendar.Tags.TAG_EVENTS_STACK
 import academy.compose.calendar.ui.EventStack
 import androidx.compose.foundation.layout.height

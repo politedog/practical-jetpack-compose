@@ -1,4 +1,4 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
 import academy.compose.calendar.Tags.TAG_EVENTS_STACK
 import academy.compose.calendar.Tags.TAG_WEEK_ROW

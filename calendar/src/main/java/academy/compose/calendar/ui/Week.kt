@@ -1,5 +1,22 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.calendar.ui
 
+import academy.compose.calendar.EventFactory
+import academy.compose.calendar.Tags.TAG_WEEK_ROW
 import academy.compose.calendar.model.CalendarEvent
 import academy.compose.calendar.util.eventsForCurrentWeek
 import academy.compose.calendar.util.isSameDate
@@ -21,7 +38,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.util.*
@@ -33,7 +52,7 @@ fun WeekRow(
     events: List<CalendarEvent>
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.testTag(TAG_WEEK_ROW),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         (0 until 7).forEach { rowPosition ->
@@ -42,8 +61,9 @@ fun WeekRow(
                 Calendar.DAY_OF_WEEK,
                 (rowPosition)
             )
-            WeekDay(dateForMonthCell,
-                eventsForCurrentWeek(dateForMonthCell, events)
+            WeekDay(
+                date = dateForMonthCell,
+                events = eventsForCurrentWeek(dateForMonthCell, events)
             )
         }
     }
@@ -51,11 +71,12 @@ fun WeekRow(
 
 @Composable
 fun RowScope.WeekDay(
+    modifier: Modifier = Modifier,
     date: Calendar,
     events: List<CalendarEvent>
 ) {
     Column(
-        Modifier
+        modifier
             .weight(1f)
             .fillMaxHeight()
             .drawBehind {
@@ -90,12 +111,34 @@ fun Modifier.dateBackground(
     isToday: Boolean
 ): Modifier {
     return if (isToday) {
-        this.padding(4.dp)
+        this
+            .padding(4.dp)
             .background(
                 Color.Blue, CircleShape
             )
             .padding(4.dp)
     } else {
         this.padding(8.dp)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_WeekRow() {
+    WeekRow(
+        modifier = Modifier.fillMaxWidth(),
+        calendarWeek = Calendar.getInstance(),
+        events = EventFactory.events
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_WeekDay() {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        WeekDay(
+            date = Calendar.getInstance(),
+            events = EventFactory.events
+        )
     }
 }

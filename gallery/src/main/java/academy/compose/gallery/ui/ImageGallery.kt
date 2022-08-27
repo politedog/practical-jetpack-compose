@@ -16,9 +16,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,7 +45,7 @@ fun ImageGallery(
         val enlargeImageLabel = stringResource(id = R.string.cd_enlarge_image)
         LazyVerticalGrid(
             modifier = modifier.testTag(TAG_IMAGE_GRID),
-            cells = GridCells.Fixed(2)
+            columns = GridCells.Fixed(2)
         ) {
             items(images) {
                 GalleryImage(

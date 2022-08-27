@@ -1,6 +1,7 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
 import academy.compose.calendar.model.CalendarEvent
+import androidx.compose.ui.graphics.Color
 import java.util.UUID
 import java.util.Calendar
 
@@ -10,7 +11,7 @@ object TestDataFactory {
     fun events(count: Int, date: Calendar): List<CalendarEvent> {
         return (0 until count).map {
             CalendarEvent(
-                randomString(),
+                Color.Red,
                 date,
                 date
             )

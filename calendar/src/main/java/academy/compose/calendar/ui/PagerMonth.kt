@@ -15,10 +15,9 @@
  */
 package academy.compose.calendar.ui
 
-import academy.compose.calendar.EventFactory
-import academy.compose.calendar.Tags.TAG_MONTH
+import academy.compose.calendar.Tags
+import academy.compose.calendar.util.currentDateForCalendarPage
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -27,42 +26,42 @@ import androidx.compose.ui.unit.dp
 import java.util.*
 
 @Composable
-fun Month(
+fun PagerMonth(
     modifier: Modifier = Modifier,
-    date: Calendar
+    currentDate: Calendar
 ) {
     Column(
-        modifier = modifier.testTag(TAG_MONTH),
+        modifier = modifier,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        (0 until 6).forEach { columnPosition ->
-            Divider(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1.dp)
+        DaysOfWeek(
+            modifier = Modifier.fillMaxWidth().testTag(
+                Tags.TAG_DAYS_OF_WEEK + "_" + currentDate
+                    .get(Calendar.MONTH)
+                    .toString()
             )
-            val dateForMonthCell = date.clone() as Calendar
-            dateForMonthCell.add(
-                Calendar.WEEK_OF_YEAR,
-                columnPosition
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Month(
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag(
+                    Tags.TAG_MONTH_PAGE + currentDate
+                        .get(Calendar.MONTH)
+                        .toString()
+                ),
+            date = currentDateForCalendarPage(
+                currentDate
             )
-            WeekRow(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .testTag(dateForMonthCell.get(Calendar.WEEK_OF_YEAR).toString()),
-                calendarWeek = dateForMonthCell,
-                EventFactory.events
-            )
-        }
+        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun Preview_Month() {
-    Month(
+fun Preview_PagerMonth() {
+    PagerMonth(
         modifier = Modifier.fillMaxSize(),
-        date = Calendar.getInstance()
+        currentDate = Calendar.getInstance()
     )
 }

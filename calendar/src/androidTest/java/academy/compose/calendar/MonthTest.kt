@@ -1,4 +1,4 @@
-package academy.compose.practical.calendar
+package academy.compose.calendar
 
 import academy.compose.calendar.Tags.TAG_MONTH
 import academy.compose.calendar.util.currentDateForCalendarPage
