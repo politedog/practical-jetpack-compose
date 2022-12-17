@@ -19,6 +19,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
+import com.google.accompanist.permissions.PermissionStatus
+import com.google.accompanist.permissions.shouldShowRationale
 
 @ExperimentalFoundationApi
 @ExperimentalPermissionsApi
@@ -30,7 +32,7 @@ fun GalleryContent(
     openSettings: () -> Unit
 ) {
     when {
-        permissionState.hasPermission -> {
+        permissionState.status == PermissionStatus.Granted -> {
             if (media == null) {
                 Box(
                     modifier = modifier.testTag(TAG_PROGRESS),
@@ -45,7 +47,7 @@ fun GalleryContent(
                 )
             }
         }
-        !permissionState.permissionRequested -> {
+        permissionState.status.shouldShowRationale -> {
             PermissionExplainer(
                 modifier = Modifier.fillMaxSize()
             ) {
@@ -73,14 +75,10 @@ fun Preview_GalleryContent_Loading() {
             modifier = Modifier.fillMaxSize(),
             media = null,
             permissionState = object : PermissionState {
-                override val hasPermission: Boolean
-                    get() = true
                 override val permission: String
                     get() = ""
-                override val permissionRequested: Boolean
-                    get() = false
-                override val shouldShowRationale: Boolean
-                    get() = false
+                override val status: PermissionStatus
+                    get() =  PermissionStatus.Granted
 
                 override fun launchPermissionRequest() { }
             },
@@ -98,14 +96,10 @@ fun Preview_GalleryContent_Images() {
             modifier = Modifier.fillMaxSize(),
             media = listOf(Image(id = 0L, uri = Uri.EMPTY, name = "image")),
             permissionState = object : PermissionState {
-                override val hasPermission: Boolean
-                    get() = true
                 override val permission: String
                     get() = ""
-                override val permissionRequested: Boolean
-                    get() = false
-                override val shouldShowRationale: Boolean
-                    get() = false
+                override val status: PermissionStatus
+                    get() =  PermissionStatus.Granted
 
                 override fun launchPermissionRequest() { }
             },
@@ -123,14 +117,10 @@ fun Preview_GalleryContent_Denied() {
             modifier = Modifier.fillMaxSize(),
             media = listOf(Image(id = 0L, uri = Uri.EMPTY, name = "image")),
             permissionState = object : PermissionState {
-                override val hasPermission: Boolean
-                    get() = false
                 override val permission: String
                     get() = ""
-                override val permissionRequested: Boolean
-                    get() = true
-                override val shouldShowRationale: Boolean
-                    get() = false
+                override val status: PermissionStatus
+                    get() =  PermissionStatus.Granted
 
                 override fun launchPermissionRequest() { }
             },

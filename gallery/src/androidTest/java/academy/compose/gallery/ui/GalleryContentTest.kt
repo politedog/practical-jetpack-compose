@@ -15,6 +15,7 @@ import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
+import com.google.accompanist.permissions.PermissionStatus
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.doReturn
@@ -32,14 +33,10 @@ class GalleryContentTest {
     @Test
     fun Image_Gallery_Displayed() {
         val permissionState = object : PermissionState {
-            override val hasPermission: Boolean
-                get() = true
             override val permission: String
                 get() = ""
-            override val permissionRequested: Boolean
-                get() = false
-            override val shouldShowRationale: Boolean
-                get() = false
+            override val status: PermissionStatus
+                get() = PermissionStatus.Granted
 
             override fun launchPermissionRequest() { }
         }
@@ -58,14 +55,10 @@ class GalleryContentTest {
     @Test
     fun Progress_Displayed() {
         val permissionState = object : PermissionState {
-            override val hasPermission: Boolean
-                get() = true
             override val permission: String
                 get() = ""
-            override val permissionRequested: Boolean
-                get() = false
-            override val shouldShowRationale: Boolean
-                get() = false
+            override val status: PermissionStatus
+                get() = PermissionStatus.Granted
 
             override fun launchPermissionRequest() { }
         }
@@ -84,14 +77,10 @@ class GalleryContentTest {
     @Test
     fun Denied_Permission_Displayed() {
         val permissionState = object : PermissionState {
-            override val hasPermission: Boolean
-                get() = false
             override val permission: String
                 get() = ""
-            override val permissionRequested: Boolean
-                get() = true
-            override val shouldShowRationale: Boolean
-                get() = false
+            override val status: PermissionStatus
+                get() = PermissionStatus.Denied(shouldShowRationale = false)
 
             override fun launchPermissionRequest() { }
         }
@@ -110,10 +99,8 @@ class GalleryContentTest {
     @Test
     fun Permission_Request_Triggered() {
         val permissionState = mock<PermissionState>()
-        whenever(permissionState.permissionRequested)
-            .doReturn(false)
-        whenever(permissionState.hasPermission)
-            .doReturn(false)
+        whenever(permissionState.status)
+            .doReturn(PermissionStatus.Denied(shouldShowRationale = true))
 
         composeTestRule.setContent {
             GalleryContent(
