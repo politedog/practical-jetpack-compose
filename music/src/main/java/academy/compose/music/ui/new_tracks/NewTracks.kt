@@ -17,6 +17,7 @@ package academy.compose.music.ui.new_tracks
 
 import academy.compose.music.ContentFactory
 import academy.compose.music.model.Track
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
@@ -29,9 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 fun LazyListScope.NewTracks(
     tracks: List<Track>?,
     onTrackClicked: (track: Track) -> Unit
@@ -54,7 +54,7 @@ fun LazyListScope.NewTracks(
     }
 }
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @Preview
 @Composable
 fun Preview_NewTracks() {

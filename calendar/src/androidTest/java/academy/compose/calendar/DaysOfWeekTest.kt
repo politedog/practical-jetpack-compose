@@ -20,7 +20,7 @@ class DaysOfWeekTest {
         composeTestRule.setContent {
             DaysOfWeek()
         }
-        InstrumentationRegistry.getInstrumentation().context
+        InstrumentationRegistry.getInstrumentation().targetContext
             .resources.getStringArray(R.array.days_of_week)
             .forEachIndexed { index, day ->
                 composeTestRule.onNodeWithTag(

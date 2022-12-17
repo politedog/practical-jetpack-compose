@@ -19,7 +19,6 @@ import academy.compose.music.ContentFactory
 import academy.compose.music.R
 import academy.compose.music.Tags
 import academy.compose.music.model.Track
-import academy.compose.music.ui.new_tracks.NewTracks
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +35,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 
 @ExperimentalFoundationApi
 fun LazyListScope.FeaturedTracks(
@@ -63,7 +61,6 @@ fun LazyListScope.FeaturedTracks(
 }
 
 @ExperimentalFoundationApi
-@ExperimentalSnapperApi
 @Preview(showBackground = true)
 @Composable
 fun Preview_NewTracks() {

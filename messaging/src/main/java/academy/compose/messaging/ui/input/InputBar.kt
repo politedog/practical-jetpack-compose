@@ -64,11 +64,13 @@ fun InputBar(
 ) {
     Column(modifier = modifier.testTag(TAG_INPUT_BAR)) {
         var textState by remember { mutableStateOf(TextFieldValue("")) }
-        val showMentions by derivedStateOf {
-            textState.text.isNotEmpty() && inputShouldTriggerSuggestions(
-                contacts,
-                selectedWord(textState)
-            )
+        val showMentions by remember {
+            derivedStateOf {
+                textState.text.isNotEmpty() && inputShouldTriggerSuggestions(
+                    contacts,
+                    selectedWord(textState)
+                )
+            }
         }
         if (showMentions) {
             Mentions(
@@ -137,7 +139,7 @@ class MentionHighlightTransformation(private val color: Color) : VisualTransform
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun Preview_InputBar() {
     MaterialTheme {

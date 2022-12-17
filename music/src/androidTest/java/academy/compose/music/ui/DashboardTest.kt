@@ -23,14 +23,14 @@ import academy.compose.music.Tags.TAG_SEARCH_BAR
 import academy.compose.music.TestDataFactory
 import academy.compose.music.model.MusicDashboardState
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 class DashboardTest {

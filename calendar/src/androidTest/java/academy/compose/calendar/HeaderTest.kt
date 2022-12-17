@@ -44,7 +44,7 @@ class HeaderTest {
             )
         }
         composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().context
+            InstrumentationRegistry.getInstrumentation().targetContext
                 .getString(R.string.cd_previous_month)
         ).performClick()
         verify(previousMonth).invoke()
@@ -61,7 +61,7 @@ class HeaderTest {
             )
         }
         composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().context
+            InstrumentationRegistry.getInstrumentation().targetContext
                 .getString(R.string.cd_next_month)
         ).performClick()
         verify(nextMonth).invoke()

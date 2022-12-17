@@ -16,7 +16,6 @@
 package academy.compose.music.ui
 
 import academy.compose.music.ContentFactory
-import academy.compose.music.Tags.TAG_DASHBOARD
 import academy.compose.music.Tags.TAG_SEARCH_RESULTS
 import academy.compose.music.Tags.TAG_TRACKS_DASHBOARD
 import academy.compose.music.model.MusicDashboardState
@@ -35,10 +34,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 
-@OptIn(ExperimentalFoundationApi::class)
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @Composable
 fun TracksDashboard(
     modifier: Modifier = Modifier,
@@ -58,7 +55,7 @@ fun TracksDashboard(
                 tracks = state.newTracks(),
                 onTrackClicked = onTrackClicked
             )
-            if (!state.recentTracks().isNullOrEmpty()) {
+            if (state.recentTracks().isNotEmpty()) {
                 RecentTracks(
                     tracks = state.recentTracks(),
                     onTrackClicked = onTrackClicked
@@ -76,7 +73,7 @@ fun TracksDashboard(
     }
 }
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @Preview(showBackground = true)
 @Composable
 fun TracksDashboard_Preview() {

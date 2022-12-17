@@ -6,6 +6,8 @@ import academy.compose.calendar.Tags.TAG_HEADER
 import academy.compose.calendar.Tags.TAG_MONTH_HEADER
 import academy.compose.calendar.Tags.TAG_MONTH_PAGE
 import academy.compose.calendar.ui.MonthCalendar
+import android.os.SystemClock
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
@@ -70,7 +72,7 @@ class MonthlyTest {
             )
         }
         composeTestRule
-            .onNodeWithTag(TAG_MONTH_PAGE + calendar.get(Calendar.MONTH).toString())
+            .onNodeWithTag(TAG_MONTH_PAGE + calendar.get(Calendar.MONTH))
             .assertIsDisplayed()
     }
 
@@ -85,7 +87,7 @@ class MonthlyTest {
 
         composeTestRule
             .onNodeWithContentDescription(
-                InstrumentationRegistry.getInstrumentation().context
+                InstrumentationRegistry.getInstrumentation().targetContext
                     .getString(R.string.cd_next_month)
             )
             .performClick()
@@ -112,7 +114,7 @@ class MonthlyTest {
 
         composeTestRule
             .onNodeWithContentDescription(
-                InstrumentationRegistry.getInstrumentation().context
+                InstrumentationRegistry.getInstrumentation().targetContext
                     .getString(R.string.cd_next_month)
             )
             .performClick()
@@ -140,7 +142,7 @@ class MonthlyTest {
 
         composeTestRule
             .onNodeWithContentDescription(
-                InstrumentationRegistry.getInstrumentation().context
+                InstrumentationRegistry.getInstrumentation().targetContext
                     .getString(R.string.cd_previous_month)
             )
             .performClick()
@@ -167,7 +169,7 @@ class MonthlyTest {
 
         composeTestRule
             .onNodeWithContentDescription(
-                InstrumentationRegistry.getInstrumentation().context
+                InstrumentationRegistry.getInstrumentation().targetContext
                     .getString(R.string.cd_previous_month)
             )
             .performClick()

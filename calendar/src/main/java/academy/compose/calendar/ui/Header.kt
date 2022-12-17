@@ -18,16 +18,17 @@ package academy.compose.calendar.ui
 import academy.compose.calendar.R
 import academy.compose.calendar.Tags
 import academy.compose.calendar.Tags.TAG_MONTH_HEADER
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -43,16 +44,18 @@ fun Header(
     previousMonth: () -> Unit,
     nextMonth: () -> Unit
 ) {
-    Row(modifier = modifier.padding(16.dp).testTag(Tags.TAG_HEADER)) {
-        Icon(
-            modifier = Modifier.clickable(
-                onClickLabel = stringResource(id = R.string.cd_previous_month)
-            ) {
-                previousMonth()
-            },
-            imageVector = Icons.Default.KeyboardArrowLeft,
-            contentDescription = null
-        )
+    Row(
+        modifier = modifier
+            .padding(16.dp)
+            .testTag(Tags.TAG_HEADER),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = { previousMonth() }) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowLeft,
+                contentDescription = stringResource(id = R.string.cd_previous_month)
+            )
+        }
         Text(
             text = title,
             modifier = Modifier
@@ -61,15 +64,14 @@ fun Header(
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold
         )
-        Icon(
-            modifier = Modifier.clickable(
-                onClickLabel = stringResource(id = R.string.cd_next_month)
-            ) {
-                nextMonth()
-            },
-            imageVector = Icons.Default.KeyboardArrowRight,
-            contentDescription = null
-        )
+        IconButton(onClick = {
+            nextMonth()
+        }) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = stringResource(id = R.string.cd_next_month)
+            )
+        }
     }
 }
 

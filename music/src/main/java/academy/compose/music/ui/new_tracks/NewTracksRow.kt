@@ -20,27 +20,22 @@ import academy.compose.music.R
 import academy.compose.music.Tags.TAG_NEW_TRACKS
 import academy.compose.music.Tags.TAG_TRACK
 import academy.compose.music.model.Track
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
-import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
-import kotlinx.coroutines.launch
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @Composable
 fun NewTracksRow(
     modifier: Modifier = Modifier,
@@ -53,7 +48,7 @@ fun NewTracksRow(
             modifier = modifier
                 .testTag(TAG_NEW_TRACKS),
             state = lazyListState,
-            flingBehavior = rememberSnapperFlingBehavior(lazyListState),
+            flingBehavior = rememberSnapFlingBehavior(lazyListState),
             contentPadding = PaddingValues(8.dp)
         ) {
             items(tracks) { track ->
@@ -77,7 +72,7 @@ fun NewTracksRow(
     }
 }
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @Preview(showBackground = true)
 @Composable
 fun Preview_NewTracksRow() {

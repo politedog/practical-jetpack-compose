@@ -19,15 +19,15 @@ import academy.compose.music.ContentFactory
 import academy.compose.music.Tags.TAG_NEW_TRACKS
 import academy.compose.music.Tags.TAG_TRACK
 import academy.compose.music.model.Track
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.mock
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 class NewTracksRowTest {
 
     @get:Rule

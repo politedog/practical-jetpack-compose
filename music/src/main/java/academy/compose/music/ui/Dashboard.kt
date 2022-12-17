@@ -17,11 +17,13 @@ package academy.compose.music.ui
 
 import academy.compose.music.ContentFactory
 import academy.compose.music.Tags
+import academy.compose.music.Tags.TAG_DASHBOARD
 import academy.compose.music.model.MusicCatalogEvent
 import academy.compose.music.model.MusicDashboardState
 import academy.compose.music.ui.player.MusicPlayer
 import academy.compose.music.ui.search.SearchBar
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.BackdropScaffold
@@ -37,9 +39,8 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
@@ -56,7 +57,7 @@ fun Dashboard(
     }
 
     BackdropScaffold(
-        modifier = Modifier.testTag(Tags.TAG_DASHBOARD),
+        modifier = Modifier.testTag(TAG_DASHBOARD),
         headerHeight = 65.dp,
         peekHeight = 0.dp,
         gesturesEnabled = false,
@@ -99,7 +100,7 @@ fun Dashboard(
     )
 }
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @Preview
@@ -115,7 +116,7 @@ fun Preview_MusicPlayer() {
     }
 }
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @Preview

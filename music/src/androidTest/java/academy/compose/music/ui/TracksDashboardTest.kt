@@ -16,14 +16,15 @@
 package academy.compose.music.ui
 
 import academy.compose.music.R
-import academy.compose.music.Tags.TAG_DASHBOARD
 import academy.compose.music.Tags.TAG_FEATURED_TRACKS
 import academy.compose.music.Tags.TAG_NEW_TRACKS
 import academy.compose.music.Tags.TAG_SEARCH_RESULTS
 import academy.compose.music.Tags.TAG_TRACK
+import academy.compose.music.Tags.TAG_TRACKS_DASHBOARD
 import academy.compose.music.TestDataFactory
 import academy.compose.music.model.MusicDashboardState
 import academy.compose.music.model.Track
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
@@ -34,13 +35,12 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.platform.app.InstrumentationRegistry
-import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-@ExperimentalSnapperApi
+@ExperimentalFoundationApi
 class TracksDashboardTest {
 
     @get:Rule
@@ -55,7 +55,7 @@ class TracksDashboardTest {
             )
         }
 
-        composeTestRule.onNodeWithTag(TAG_DASHBOARD)
+        composeTestRule.onNodeWithTag(TAG_TRACKS_DASHBOARD)
             .assertIsDisplayed()
     }
 
@@ -70,7 +70,7 @@ class TracksDashboardTest {
             )
         }
 
-        composeTestRule.onNodeWithTag(TAG_DASHBOARD)
+        composeTestRule.onNodeWithTag(TAG_TRACKS_DASHBOARD)
             .onChildAt(4)
             .assertTextEquals(
                 InstrumentationRegistry.getInstrumentation().targetContext
@@ -92,9 +92,9 @@ class TracksDashboardTest {
             )
         }
 
-        recentTracks!!.forEachIndexed { index, track ->
+        recentTracks.forEachIndexed { index, track ->
             composeTestRule
-                .onNodeWithTag(TAG_DASHBOARD)
+                .onNodeWithTag(TAG_TRACKS_DASHBOARD)
                 .onChildAt(5 + index)
                 .performScrollTo()
                 .assert(hasTestTag(TAG_TRACK + track.id))
@@ -117,7 +117,7 @@ class TracksDashboardTest {
         }
 
         composeTestRule
-            .onNodeWithTag(TAG_DASHBOARD)
+            .onNodeWithTag(TAG_TRACKS_DASHBOARD)
             .onChildAt(5)
             .performClick()
 
@@ -135,7 +135,7 @@ class TracksDashboardTest {
             )
         }
 
-        composeTestRule.onNodeWithTag(TAG_DASHBOARD)
+        composeTestRule.onNodeWithTag(TAG_TRACKS_DASHBOARD)
             .onChildAt(0)
             .assertTextEquals(
                 InstrumentationRegistry.getInstrumentation().targetContext
@@ -193,7 +193,7 @@ class TracksDashboardTest {
             )
         }
 
-        composeTestRule.onNodeWithTag(TAG_DASHBOARD)
+        composeTestRule.onNodeWithTag(TAG_TRACKS_DASHBOARD)
             .onChildAt(2)
             .assertTextEquals(
                 InstrumentationRegistry.getInstrumentation().targetContext

@@ -56,7 +56,7 @@ class EventsStackTest {
             )
         }
         composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().context
+            InstrumentationRegistry.getInstrumentation().targetContext
                 .getString(R.string.cd_view_more_events)
         ).assertIsDisplayed()
     }
@@ -70,7 +70,7 @@ class EventsStackTest {
             )
         }
         composeTestRule.onNodeWithContentDescription(
-            InstrumentationRegistry.getInstrumentation().context
+            InstrumentationRegistry.getInstrumentation().targetContext
                 .getString(R.string.cd_view_more_events)
         ).assertIsNotDisplayed()
     }

@@ -46,7 +46,7 @@ class ChartPickerTest {
                 onPickerRequested = { }
             )
         }
-        composeTestRule.onNodeWithTag(TAG_SELECTED_CHART)
+        composeTestRule.onNodeWithTag(TAG_SELECTED_CHART, useUnmergedTree = true)
             .assertTextEquals(
                 InstrumentationRegistry.getInstrumentation()
                     .targetContext.getString(GraphType.AREA.label)
@@ -90,7 +90,7 @@ class ChartPickerTest {
             )
         }
 
-        composeTestRule.onNodeWithTag(TAG_SELECTED_CHART)
+        composeTestRule.onNodeWithTag(TAG_SELECTED_CHART, useUnmergedTree = true)
             .performClick()
 
         verify(onPickerRequested).invoke()
