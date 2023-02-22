@@ -21,6 +21,7 @@ import academy.compose.home.model.Destination
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -117,9 +118,9 @@ fun Home(
                 }
             }
         }
-    ) {
+    ) { padding ->
         Body(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(padding),
             destination = currentDestination,
             navController = navController,
             onCreateItem = {

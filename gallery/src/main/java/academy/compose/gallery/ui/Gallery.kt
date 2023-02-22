@@ -34,9 +34,15 @@ fun Gallery() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var retrievedMedia by remember { mutableStateOf<List<Image>?>(null) }
-    val permissionState = rememberPermissionState(
-        Manifest.permission.READ_EXTERNAL_STORAGE
-    )
+    val permissionState = if (
+        android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+    ) {
+        rememberPermissionState(Manifest.permission.READ_MEDIA_IMAGES)
+    } else {
+        rememberPermissionState(
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+    }
     LaunchedEffect(key1 = permissionState.status) {
         if (permissionState.status == PermissionStatus.Granted) {
             scope.launch(Dispatchers.IO) {

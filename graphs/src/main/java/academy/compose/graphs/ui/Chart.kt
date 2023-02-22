@@ -17,6 +17,7 @@ package academy.compose.graphs.ui
 
 import academy.compose.graphs.model.GraphData
 import academy.compose.graphs.model.GraphType
+import academy.compose.graphs.ui.graph.BarChart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 

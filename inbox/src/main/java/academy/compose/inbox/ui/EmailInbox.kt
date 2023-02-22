@@ -23,6 +23,7 @@ import academy.compose.inbox.model.InboxStatus
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -57,9 +58,9 @@ fun EmailInbox(
                 )
             }
         }
-    ) {
+    ) { padding ->
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(padding),
             contentAlignment = Alignment.Center
         ) {
             when (inboxState.status) {

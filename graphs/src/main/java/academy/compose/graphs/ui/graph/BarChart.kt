@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package academy.compose.graphs.ui
+package academy.compose.graphs.ui.graph
 
 import academy.compose.graphs.GraphsDataFactory
 import academy.compose.graphs.Tags.TAG_CHART_BAR
 import academy.compose.graphs.model.GraphData
+import academy.compose.graphs.ui.*
 import android.graphics.Rect
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
