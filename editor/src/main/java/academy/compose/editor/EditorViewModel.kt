@@ -1,3 +1,18 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.editor
 
 import academy.compose.editor.model.*
@@ -28,8 +43,8 @@ class EditorViewModel : ViewModel() {
                 val selectedObject = uiState.value.drawingObjects.find {
                     it.id == contentEvent.id
                 } as EditorObject.Text
-                val scale = selectedObject.scale * (contentEvent.scale ?: 1f)
-                val rotation = selectedObject.rotation + (contentEvent.rotation ?: 1f)
+                val scale = selectedObject.scale * contentEvent.scale
+                val rotation = selectedObject.rotation + contentEvent.rotation
 
                 val transformedOffset = contentEvent.offset.copy(
                     x = contentEvent.offset.x * scale,
@@ -56,7 +71,7 @@ class EditorViewModel : ViewModel() {
                 when (contentEvent.event.action) {
                     MotionEvent.ACTION_DOWN -> {
                         val path = Path().apply {
-                            moveTo(contentEvent.x, contentEvent.y)
+                            moveTo(contentEvent.event.x, contentEvent.event.y)
                         }
                         uiState.value = uiState.value.copy(
                             currentDrawingPath = EditorObject.BrushPath(
@@ -68,7 +83,7 @@ class EditorViewModel : ViewModel() {
                     MotionEvent.ACTION_MOVE -> {
                         val brushPath = (uiState.value.currentDrawingPath as EditorObject.BrushPath)
                         val updatedPath = brushPath.path.value.apply {
-                                lineTo(contentEvent.x, contentEvent.y)
+                                lineTo(contentEvent.event.x, contentEvent.event.y)
                             }
                         val config = brushPath.brushConfiguration
                         uiState.value = uiState.value.copy(

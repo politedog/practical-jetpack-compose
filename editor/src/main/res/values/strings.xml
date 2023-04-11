@@ -9,4 +9,5 @@
     <string name="cd_done">Done</string>
     <string name="cd_close_color_selection">Close Color Selection</string>
     <string name="cd_select_emoji">Select %s emoji</string>
+    <string name="cd_select_color">Select color</string>
 </resources>

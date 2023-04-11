@@ -1,11 +1,25 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.editor.emoji
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun EmojiSheet(
@@ -20,6 +34,7 @@ fun EmojiSheet(
     Column(modifier = modifier) {
         emojis.chunked(4).map { emojiRow ->
             EmojiRow(
+                modifier = Modifier.fillMaxWidth(),
                 emojis = emojiRow,
                 onSelected = onEmojiSelected
             )
@@ -27,13 +42,23 @@ fun EmojiSheet(
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun Preview_EmojiSheet() {
+    EmojiSheet(
+        modifier = Modifier.padding(16.dp),
+        onEmojiSelected = {}
+    )
+}
+
 @Composable
 fun EmojiRow(
+    modifier: Modifier,
     emojis: List<String>,
     onSelected: (emoji: String) -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         emojis.forEach { emoji ->
@@ -43,4 +68,16 @@ fun EmojiRow(
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_EmojiRow() {
+    EmojiRow(
+        modifier = Modifier.padding(16.dp),
+        emojis = listOf(
+            "❤️", "🙌", "🥳️", "👏️"
+        ),
+        onSelected = {}
+    )
 }

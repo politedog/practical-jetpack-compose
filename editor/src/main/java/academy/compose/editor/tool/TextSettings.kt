@@ -1,56 +1,71 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.editor.tool
 
-import academy.compose.editor.model.EditorObject
 import academy.compose.editor.R
 import academy.compose.editor.ui.ColorPicker
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FormatColorText
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun TextSettings(
     modifier: Modifier = Modifier,
-    text: EditorObject.Text? = null,
     addText: (text: String, color: Color) -> Unit
 ) {
     Box(
         modifier = modifier.background(Color.Black.copy(alpha = 0.8f))
     ) {
         var content by remember {
-            mutableStateOf("")
+            mutableStateOf("Hello there")
         }
         var color by remember {
-            mutableStateOf(text?.color ?: Color.White)
+            mutableStateOf(Color.White)
         }
-        LaunchedEffect(text) {
-            content = text?.text ?: ""
+        val focusRequester = FocusRequester()
+        LaunchedEffect(Unit) {
+            focusRequester.requestFocus()
         }
         var showingColors by remember { mutableStateOf(false) }
         Row(modifier = Modifier.fillMaxWidth()) {
             if (!showingColors) {
-                Icon(
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .clickable {
-                            showingColors = !showingColors
-                        },
-                    imageVector = Icons.Default.FormatColorText,
-                    contentDescription = "Color",
-                    tint = Color.White
-                )
+                IconButton(onClick = { showingColors = !showingColors }) {
+                    Icon(
+                        modifier = Modifier
+                            .padding(20.dp),
+                        imageVector = Icons.Default.FormatColorText,
+                        contentDescription = stringResource(id = R.string.cd_select_color),
+                        tint = Color.White
+                    )
+                }
             }
             if (showingColors) {
                 ColorPicker(
@@ -61,8 +76,7 @@ fun TextSettings(
                     },
                     onClose = {
                         showingColors = !showingColors
-                    },
-                    isVertical = true
+                    }
                 )
             } else {
                 Spacer(Modifier.weight(1f))
@@ -81,11 +95,6 @@ fun TextSettings(
             }
         }
 
-        val focusRequester = FocusRequester()
-        LaunchedEffect(Unit) {
-            focusRequester.requestFocus()
-        }
-
         TextField(
             modifier = Modifier
                 .widthIn(min = 28.dp)
@@ -96,7 +105,7 @@ fun TextSettings(
             onValueChange = {
                 content = it
             },
-            textStyle = TextStyle(fontSize = 24.sp),
+            textStyle = TextStyle(fontSize = 24.sp, textAlign = TextAlign.Center),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Unspecified,
                 textColor = color,
@@ -106,4 +115,17 @@ fun TextSettings(
             )
         )
     }
+}
+
+@ExperimentalComposeUiApi
+@ExperimentalMaterialApi
+@Preview(showBackground = true)
+@Composable
+fun Preview_TextSettings() {
+    TextSettings(
+        modifier = Modifier.fillMaxSize(),
+        addText = { a, b ->
+
+        }
+    )
 }

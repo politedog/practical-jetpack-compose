@@ -1,14 +1,27 @@
+/*
+ * Copyright 2022 Compose Academy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package academy.compose.editor.ui
 
 import academy.compose.editor.R
 import academy.compose.editor.model.EditorTool
 import academy.compose.editor.tool.Tool
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -18,7 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun EditorToolBar(
@@ -38,8 +51,27 @@ fun EditorToolBar(
             )
         }
         Spacer(modifier = Modifier.weight(1f))
-        Tool(Modifier.padding(end = 12.dp), EditorTool.Text(), onToolSelected)
-        Tool(Modifier.padding(end = 12.dp), EditorTool.Brush(), onToolSelected)
-        Tool(Modifier.padding(end = 12.dp), EditorTool.Emoji(), onToolSelected)
+        Tool(
+            tool = EditorTool.Text,
+            onSelected = onToolSelected
+        )
+        Tool(
+            tool = EditorTool.Brush,
+            onSelected = onToolSelected
+        )
+        Tool(
+            tool = EditorTool.Emoji,
+            onSelected = onToolSelected
+        )
     }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun Preview_EditorToolBar() {
+    EditorToolBar(
+        modifier = Modifier.wrapContentSize(),
+        onToolSelected = { },
+        closeEditor = { }
+    )
 }

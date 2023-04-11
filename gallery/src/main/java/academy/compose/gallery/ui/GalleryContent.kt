@@ -47,7 +47,7 @@ fun GalleryContent(
                 )
             }
         }
-        !permissionState.status.shouldShowRationale -> {
+        permissionState.status.shouldShowRationale -> {
             PermissionExplainer(
                 modifier = Modifier.fillMaxSize()
             ) {
