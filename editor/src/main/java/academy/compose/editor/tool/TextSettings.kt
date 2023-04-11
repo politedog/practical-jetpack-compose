@@ -45,7 +45,7 @@ fun TextSettings(
         modifier = modifier.background(Color.Black.copy(alpha = 0.8f))
     ) {
         var content by remember {
-            mutableStateOf("Hello there")
+            mutableStateOf("")
         }
         var color by remember {
             mutableStateOf(Color.White)
