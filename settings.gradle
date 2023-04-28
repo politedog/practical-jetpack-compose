@@ -7,15 +7,3 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Practical Jetpack Compose"
-include ':settings'
-include ':authentication'
-include ':home'
-include ':inbox'
-include ':video'
-include ':messaging'
-include ':music'
-include ':gallery'
-include ':graphs'
-include ':calendar'
-include ':blog'
-include ':editor'
