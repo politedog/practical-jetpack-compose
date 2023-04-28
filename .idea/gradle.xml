@@ -9,18 +9,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/authentication" />
-            <option value="$PROJECT_DIR$/blog" />
-            <option value="$PROJECT_DIR$/calendar" />
-            <option value="$PROJECT_DIR$/editor" />
-            <option value="$PROJECT_DIR$/gallery" />
-            <option value="$PROJECT_DIR$/graphs" />
-            <option value="$PROJECT_DIR$/home" />
-            <option value="$PROJECT_DIR$/inbox" />
-            <option value="$PROJECT_DIR$/messaging" />
-            <option value="$PROJECT_DIR$/music" />
-            <option value="$PROJECT_DIR$/settings" />
-            <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
       </GradleProjectSettings>
