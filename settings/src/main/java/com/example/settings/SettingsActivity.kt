@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.settings.ui.Settings
 import com.example.settings.ui.theme.PracticalJetpackComposeTheme
 
 class SettingsActivity : ComponentActivity() {
@@ -19,22 +20,17 @@ class SettingsActivity : ComponentActivity() {
             PracticalJetpackComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    Settings()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     PracticalJetpackComposeTheme {
-        Greeting("Android")
+        Settings()
     }
 }
