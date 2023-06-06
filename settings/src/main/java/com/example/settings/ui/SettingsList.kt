@@ -1,5 +1,7 @@
 package com.example.settings.ui
 
+import android.app.Application
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -17,7 +19,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -31,6 +35,7 @@ fun SettingsList(
     state: SettingsState,
     viewModel: SettingsViewModel
 ) {
+    val context = LocalContext.current
     Column(modifier = modifier.verticalScroll(rememberScrollState())) {
         TopAppBar(
             backgroundColor = MaterialTheme.colors.surface,
@@ -60,6 +65,16 @@ fun SettingsList(
         Divider()
         HintSettingsItem(modifier = Modifier.fillMaxWidth(), title = stringResource(id = R.string.setting_show_hints), checked=state.hintsEnabled, onShowHintsToggled = viewModel::toggleHintSettings)
         Divider()
+        ManageSubscriptionsSettingsItem(
+            title = stringResource(id = R.string.setting_manage_subscription),
+            onSettingClicked = { Toast.makeText(context, "Manage Subscription Clicked", Toast.LENGTH_LONG).show()})
+        SectionSpacer(modifier = Modifier.fillMaxWidth())
     }
 
+}
+
+@Preview
+@Composable
+fun SettingsListPreview() {
+    SettingsList(state = SettingsState(), viewModel = viewModel())
 }
