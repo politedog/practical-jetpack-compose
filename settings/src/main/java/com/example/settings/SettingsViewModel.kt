@@ -13,8 +13,8 @@ class SettingsViewModel: ViewModel() {
         uiState.value = uiState.value.copy(notificationsEnabled = !uiState.value.notificationsEnabled)
     }
 
-    fun toggleHintSettings() {
-        uiState.value = uiState.value.copy(hintsEnabled = !uiState.value.hintsEnabled)
+    fun toggleHintSettings(newValue: Boolean) {
+        uiState.value = uiState.value.copy(hintsEnabled = newValue)
     }
 
     fun setMarketingSettings(option: MarketingOption) {

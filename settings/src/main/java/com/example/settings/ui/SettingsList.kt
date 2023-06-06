@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -56,6 +57,9 @@ fun SettingsList(
             title = stringResource(id = R.string.notifications_label),
             checked = state.notificationsEnabled,
             onCheckedChanged = { viewModel.toggleNotificationSettings() })
+        Divider()
+        HintSettingsItem(modifier = Modifier.fillMaxWidth(), title = stringResource(id = R.string.setting_show_hints), checked=state.hintsEnabled, onShowHintsToggled = viewModel::toggleHintSettings)
+        Divider()
     }
 
 }
