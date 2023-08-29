@@ -69,8 +69,11 @@ fun SettingsList(
             title = stringResource(id = R.string.setting_manage_subscription),
             onSettingClicked = { Toast.makeText(context, "Manage Subscription Clicked", Toast.LENGTH_LONG).show()})
         SectionSpacer(modifier = Modifier.fillMaxWidth())
+        MarketingSettingItem(modifier = Modifier.fillMaxWidth(),
+            selectedOption = state.marketingOption,
+            onOptionSelected = viewModel::setMarketingSettings)
+        Divider()
     }
-
 }
 
 @Preview

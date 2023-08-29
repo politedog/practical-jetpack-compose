@@ -13,4 +13,10 @@
     <string name="setting_show_hints">Show Hints</string>
     <string name="cd_open_subscription">Open Subscription Management</string>
     <string name="setting_manage_subscription">Manage Subscription</string>
+    <string-array name="setting_options_marketing_choice">
+        <item>Opt-in for marketing emails</item>
+        <item>Don\'t send me emails</item>
+    </string-array>
+    <string name="setting_option_marketing">Receive marketing emails?</string>
+
 </resources>
