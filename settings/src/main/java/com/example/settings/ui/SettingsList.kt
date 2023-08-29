@@ -73,6 +73,10 @@ fun SettingsList(
             selectedOption = state.marketingOption,
             onOptionSelected = viewModel::setMarketingSettings)
         Divider()
+        ThemeSettingItem(modifier = Modifier.fillMaxWidth(),
+            selectedTheme = state.theme,
+            onOptionSelected = viewModel::setTheme)
+        SectionSpacer(modifier = Modifier.fillMaxWidth())
     }
 }
 
